@@ -1,1 +1,1 @@
-# Pokedex is the application that you can get Pokemon information
+# Pokedex is the application that you can get Pokemon information.
