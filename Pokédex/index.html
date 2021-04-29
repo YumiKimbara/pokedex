@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pokédex</title>
+    <link rel="icon" type="image/png" href="./images/pikachu.png" />
+    <!-- css -->
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- google font -->
+    <!-- russo one -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <!-- roboto -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awsome -->
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- JavaScript -->
+    <script defer src="js/script.js"></script>
+  </head>
+  <body class="top-page">
+    <div>
+      <nav class="nav">
+        <a href="index.html"><span class="logo">Pokédex</span></a>
+      </nav>
+    </div>
+    <div class="wrap">
+      <div>
+        <form class="form">
+          <label for="search">Search Pokémon</label>
+          <input id="search" class="input" type="text" />
+        </form>
+      </div>
+    </div>
+    <div class="types-wrapper">
+      <div class="second-title">
+        <p class="second-title-text">Search by types</p>
+      </div>
+      <ul class="types type-list">
+        <li class="type-list">
+          <i class="fas fa-circle" alt="normal" data-type="normal"></i>
+          normal
+        </li>
+        <li class="type-list">
+          <i class="fas fa-fire" data-type="fire"></i>
+          fire
+        </li>
+        <li class="type-list">
+          <i class="fas fa-tint" data-type="water"></i>
+          water
+        </li>
+        <li class="type-list">
+          <i class="fas fa-leaf" data-type="grass"></i>
+          grass
+        </li>
+        <li class="type-list">
+          <i class="fas fa-bolt" data-type="electric"></i>
+          electric
+        </li>
+        <li class="type-list">
+          <i class="fas fa-snowflake" data-type="ice"></i>
+          ice
+        </li>
+        <li class="type-list">
+          <i class="fas fa-fist-raised" data-type="fighting"></i>
+          fighting
+        </li>
+        <li class="type-list">
+          <i class="fas fa-skull" data-type="poison"></i>
+          poison
+        </li>
+        <li class="type-list">
+          <i class="fas fa-mountain" data-type="ground"></i>
+          ground
+        </li>
+        <li class="type-list">
+          <i class="fas fa-dove" data-type="flying"></i>
+          flying
+        </li>
+        <li class="type-list">
+          <i class="fas fa-dot-circle" data-type="psychic"></i>
+          psychic
+        </li>
+        <li class="type-list">
+          <i class="fas fa-bug" data-type="bug"></i>
+          bug
+        </li>
+        <li class="type-list">
+          <i class="fas fa-gem" data-type="rock"></i>
+          rock
+        </li>
+        <li class="type-list">
+          <i class="fas fa-ghost" data-type="ghost"></i>
+          ghost
+        </li>
+        <li class="type-list">
+          <i class="fas fa-dragon" data-type="dragon"></i>
+          dragon
+        </li>
+        <li class="type-list">
+          <i class="fas fa-adjust" data-type="dark"></i>
+          dark
+        </li>
+        <li class="type-list">
+          <i class="fas fa-cog" data-type="steel"></i>
+          steel
+        </li>
+        <li class="type-list">
+          <i class="fas fa-magic" data-type="fairy"></i>
+          fairy
+        </li>
+      </ul>
+    </div>
+    <div class="sort-button">
+      <button class="sort-index">Sort by index</button>
+      <button class="sort-alphabet">Sort by alphabet</button>
+    </div>
+    <div class="allPokemon"></div>
+    <div class="go-up">
+      <a href="#top-page"><i class="fas fa-chevron-circle-up"></i></a>
+    </div>
+    <footer class="attribution">
+      Icon made by Roundicons Freebies from www.flaticon.com
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+@import "body";
+
+div.wrap {
+  width: 100%;
+  @include centerItems;
+}
+
+div.wrap div {
+  position: relative;
+  margin-top: 3rem;
+}
+
+label {
+  position: absolute;
+  top: 0;
+  font-size: $pFont;
+  margin: 9px;
+  padding: 0 10px;
+  background-color: white;
+  -webkit-transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
+  transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.active {
+  top: -15px;
+  font-size: $inputFont;
+}
+
+.input[type="text"] {
+  width: 30vw;
+  padding: 0.5rem;
+  border: 1px solid $fontColor;
+  font-size: 1rem;
+  &:focus {
+    outline: none;
+  }
+}

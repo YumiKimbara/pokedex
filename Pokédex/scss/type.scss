@@ -1,0 +1,128 @@
+@import "body";
+
+.second-title {
+  position: absolute;
+  left: 26vw;
+  top: 2.3vh;
+  background-color: white;
+}
+
+.second-title-text {
+  @include gradation;
+  text-shadow: 4px 3px 6px rgba(0, 0, 0, 0.17);
+  font-family: $logoFont;
+  font-size: $secondTitle;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.types-wrapper {
+  @include centerItems;
+  position: relative;
+}
+
+.types {
+  @include centerItems;
+  @include card;
+  width: 50%;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding: 2.5rem 1rem 1rem 1rem;
+  li {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    transition: all 0.08s ease-in;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+  }
+}
+
+i {
+  font-size: $typeIcon;
+}
+
+i[data-type="normal"] {
+  color: #7f7f7f;
+}
+
+i[data-type="fire"] {
+  color: #ff9500;
+}
+
+i[data-type="water"] {
+  color: #5390d9;
+}
+
+i[data-type="grass"] {
+  color: #52b69a;
+}
+
+i[data-type="electric"] {
+  color: #f9dc5c;
+}
+
+i[data-type="ice"] {
+  color: #90e0ef;
+}
+
+i[data-type="fighting"] {
+  color: #c82b6a;
+}
+
+i[data-type="poison"] {
+  color: #9d4edd;
+}
+
+i[data-type="ground"] {
+  color: #bf4c13;
+}
+
+i[data-type="flying"] {
+  color: #a3cef1;
+}
+
+i[data-type="psychic"] {
+  color: #ff5c8a;
+}
+
+i[data-type="bug"] {
+  color: #80b918;
+}
+
+i[data-type="rock"] {
+  color: #ab947e;
+}
+
+i[data-type="ghost"] {
+  color: #3a6ea5;
+}
+
+i[data-type="dragon"] {
+  color: #0466c8;
+}
+
+i[data-type="dark"] {
+  color: #495057;
+}
+
+i[data-type="steel"] {
+  color: #6096ba;
+}
+
+i[data-type="fairy"] {
+  color: #f2a8ff;
+}
+
+.listType {
+  list-style: none;
+  padding: 0;
+  li {
+    display: inline-block;
+    padding: 0.5rem;
+  }
+}

@@ -1,0 +1,167 @@
+body {
+  color: $fontColor;
+  font-family: $mainFont;
+  font-size: $pFont;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin centerItems {
+  display: flex;
+  justify-content: center;
+}
+
+.allPokemon {
+  @include centerItems;
+  flex-wrap: wrap;
+  margin: 2.5rem 0;
+}
+
+.onePokemon {
+  @include centerItems;
+  margin-top: 2.5rem;
+}
+
+@mixin card {
+  border: 1px solid $cardColor;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px $cardColor;
+}
+
+.pokemon-info {
+  @include card;
+  width: 15%;
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  transition: all 0.2s ease-in;
+  color: $fontColor;
+
+  &:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+  }
+}
+
+.pokemon-info2 {
+  @include card;
+  position: relative;
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  // padding: 2rem;
+  margin: 0.5rem;
+  transition: all 0.2s ease-in;
+  color: $fontColor;
+}
+
+.text {
+  width: 70%;
+  padding: 2rem;
+  text-align: left;
+  font-size: $detailsFont;
+  object-fit: cover;
+}
+
+.img-container {
+  width: 50%;
+  padding: 10%;
+  //position: relative;
+  .pokemon-img2 {
+    width: 100%;
+    //height: 100%;
+    object-fit: cover;
+    //position: absolute;
+    top: 0;
+  }
+}
+
+.pokemon-img {
+  width: 50%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.pagination-btn {
+  display: flex;
+  justify-content: space-between;
+  margin: 5%;
+}
+
+.third-title {
+  position: absolute;
+  left: 52.5%;
+  top: 22.5vh;
+  background-color: white;
+  z-index: 1;
+}
+
+@mixin gradation {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(68, 173, 226, 0.6713060224089635) 0%,
+    rgba(88, 188, 224, 0.7077205882352942) 39%,
+    rgba(255, 0, 221, 0.6909138655462185) 100%,
+    rgba(8, 213, 244, 0.5760679271708684) 100%
+  );
+  -webkit-background-clip: text; //テキストでくり抜く
+  -webkit-text-fill-color: transparent; //くり抜いた部分は背景を表示
+}
+
+.third-title-text {
+  @include gradation;
+  text-shadow: 4px 3px 6px rgba(0, 0, 0, 0.17);
+  font-family: $logoFont;
+  font-size: $thirdTitle;
+  margin: 0;
+  padding: 0 10px;
+  color: white;
+}
+
+.sort-button {
+  @include centerItems;
+  button {
+    box-shadow: 4px 3px 6px rgba(0, 0, 0, 0.17);
+    transition: 0.3s;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(255, 0, 221, 0.5);
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      transition: 0.3s;
+      transform: translateY(-3px);
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.go-up {
+  @include centerItems;
+  margin-bottom: 2.5rem;
+  i {
+    color: rgba(255, 0, 221, 0.5);
+    cursor: pointer;
+  }
+}
+
+.attribution {
+  margin: 1rem;
+}
