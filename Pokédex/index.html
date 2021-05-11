@@ -30,7 +30,7 @@
     <!-- JavaScript -->
     <script defer src="js/script.js"></script>
   </head>
-  <body class="top-page">
+  <body id="top-page">
     <div>
       <nav class="nav">
         <a href="index.html"><span class="logo">Pokédex</span></a>
@@ -49,75 +49,75 @@
         <p class="second-title-text">Search by types</p>
       </div>
       <ul class="types type-list">
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-circle" alt="normal" data-type="normal"></i>
           normal
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-fire" data-type="fire"></i>
           fire
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-tint" data-type="water"></i>
           water
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-leaf" data-type="grass"></i>
           grass
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-bolt" data-type="electric"></i>
           electric
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-snowflake" data-type="ice"></i>
           ice
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-fist-raised" data-type="fighting"></i>
           fighting
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-skull" data-type="poison"></i>
           poison
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-mountain" data-type="ground"></i>
           ground
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-dove" data-type="flying"></i>
           flying
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-dot-circle" data-type="psychic"></i>
           psychic
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-bug" data-type="bug"></i>
           bug
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-gem" data-type="rock"></i>
           rock
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-ghost" data-type="ghost"></i>
           ghost
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-dragon" data-type="dragon"></i>
           dragon
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-adjust" data-type="dark"></i>
           dark
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-cog" data-type="steel"></i>
           steel
         </li>
-        <li class="type-list">
+        <li class="type-list-item">
           <i class="fas fa-magic" data-type="fairy"></i>
           fairy
         </li>
@@ -128,8 +128,11 @@
       <button class="sort-alphabet">Sort by alphabet</button>
     </div>
     <div class="allPokemon"></div>
-    <div class="go-up">
-      <a href="#top-page"><i class="fas fa-chevron-circle-up"></i></a>
+    <div class="go-up hidden">
+      <i class="fas fa-chevron-circle-up" href="#top-page"></i>
+    </div>
+    <div id="loadingImg" class="hide">
+      <img src="images/loadingImage.gif"></img>
     </div>
     <footer class="attribution">
       Icon made by Roundicons Freebies from www.flaticon.com

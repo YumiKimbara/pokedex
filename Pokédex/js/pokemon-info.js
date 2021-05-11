@@ -11,7 +11,7 @@ $("input").on("focusout", function () {
   }
 });
 
-//set variable
+//set global variable
 const input = document.querySelector(".input");
 const onePokemon = document.querySelector(".onePokemon");
 const form = document.querySelector(".form");
@@ -24,17 +24,16 @@ let description = JSON.parse(localStorage.getItem("description"));
 
 //looping abilities
 function loopAbilities(data) {
-  data.abilities.map((ability) => {
+  data.abilities.forEach((ability) => {
     abilityofPokemon.push(ability.ability.name);
     abilityofPokemonURL.push(ability.ability.url);
-
     return abilityofPokemon;
   });
 }
 
 //looping types
 function loopType(data) {
-  data.types.map((type) => {
+  data.types.forEach((type) => {
     typeofPokemon.push(type.type.name);
     return typeofPokemon;
   });
@@ -43,7 +42,7 @@ function loopType(data) {
 // checking type
 const checkType = (arr) => {
   let li = "";
-  arr.map((icon) => {
+  arr.forEach((icon) => {
     switch (icon) {
       case "normal":
         li += `<li>
@@ -143,22 +142,21 @@ const checkType = (arr) => {
 const fetchSpeciesDetail = async (pokemonValue) => {
   try {
     const api2 = `${pokemonValue.species.url}`;
-
     let fetchSpecies = await fetch(api2, {
       method: "GET",
     });
     if (!fetchSpecies.ok) throw new Error(`(${fetchData.status})`);
     fetchSpecies.json().then((data) => {
-      [data.flavor_text_entries].map((texts) => {
-        texts.map((text) => {
+      [data.flavor_text_entries].forEach((texts) => {
+        texts.forEach((text) => {
           if (text.language.name !== "en") return;
           if (text.version.name !== "sword") return;
           localStorage.setItem("description", JSON.stringify(text.flavor_text));
         });
       });
 
-      [data.genera].map((genera) => {
-        genera.map((genus) => {
+      [data.genera].forEach((genera) => {
+        genera.forEach((genus) => {
           if (genus.language.name !== "en") return;
           localStorage.setItem("category", JSON.stringify(genus.genus));
         });
@@ -169,10 +167,9 @@ const fetchSpeciesDetail = async (pokemonValue) => {
   }
 };
 
-//display one pokemon information in the screen
-function displayOnePokemon(pokemonData) {
+//render one pokemon information in the screen
+function renderOnePokemon(pokemonData) {
   $(".onePokemon").empty();
-
   category = JSON.parse(localStorage.getItem("category"));
   description = JSON.parse(localStorage.getItem("description"));
 
@@ -231,7 +228,7 @@ function displayOnePokemon(pokemonData) {
   input.value = "";
   return onePokemon.insertAdjacentHTML("beforeend", contents2);
 }
-displayOnePokemon(pokemonValue);
+renderOnePokemon(pokemonValue);
 
 //fetch onepokemon data of input form
 const fetchOnePokemon = async (pokemonValue) => {
@@ -250,6 +247,7 @@ const fetchOnePokemon = async (pokemonValue) => {
       const firstFunc = async function () {
         await fetchSpeciesDetail(pokemonValue);
       };
+      
       const secondFunc = async function () {
         await location.reload("pokemon-info.html");
       };

@@ -21,3 +21,40 @@
     padding: 1rem;
   }
 }
+
+//////////////////////////////////////////////
+//media query for iPad
+@media (max-width: 1024px) {
+  .nav .logo {
+    font-size: 2.5rem;
+  }
+}
+
+//////////////////////////////////////////////
+//media query for iPad
+@media (max-width: 540px) {
+  .nav .logo {
+    font-size: 2rem;
+  }
+}
+
+//////////////////////////////////////////////
+//media query for iPhone
+
+@media (max-width: 414px) {
+  .nav .logo {
+    font-size: 1.5rem;
+  }
+  .nav {
+    height: 12vw;
+  }
+}
+
+//////////////////////////////////////////////
+//media query for iPhone
+
+@media (max-width: 320px) {
+  .nav .logo {
+    font-size: 1.3rem;
+  }
+}
