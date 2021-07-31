@@ -20,31 +20,32 @@ const input = document.querySelector(".input");
 const typeFilterButtons = document.querySelectorAll(".type-list-item");
 const sortIndex = document.querySelector(".sort-index");
 const sortAlphabet = document.querySelector(".sort-alphabet");
-const loadingImg = document.getElementById('loadingImg');
+const loadingImg = document.getElementById("loadingImg");
 let pokemons = [];
 let filteredPokemons = [];
 let isFiltered = false;
 let observer;
+//let num2;
 
 //scroll button
-const goUp = document.querySelector('.go-up');
+const goUp = document.querySelector(".go-up");
 const goTop = () => {
-  goUp.addEventListener('click', (e) => {
+  goUp.addEventListener("click", (e) => {
     e.preventDefault();
     const id = e.target.getAttribute("href");
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
-  })
+  });
 };
 goTop();
 
 const checkScroll = () => {
   let y = window.scrollY;
-  if(y >= 950) {
-    goUp.classList.remove('hidden')
-  } else if(y <= 950) {
-    goUp.classList.add('hidden')
+  if (y >= 950) {
+    goUp.classList.remove("hidden");
+  } else if (y <= 950) {
+    goUp.classList.add("hidden");
   }
-}
+};
 window.addEventListener("scroll", checkScroll);
 
 //get and render pokemon data when footer was crossed for 50%
@@ -63,23 +64,62 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.unobserve(document.querySelector(".attribution"));
   }
   //an initial load of some data
-  getAllPokemons();
+  //getAllPokemons();
+  //sample();
 });
 
 function handleIntersect(entries) {
+  console.log("handleIntersect");
   //wnen entries[0].isIntersecting === true(cross footer 50%), excute renderMorePokemons function
   if (entries[0].isIntersecting) {
     loadingImg.classList.remove("hide");
-    renderMorePokemons();
+    let num = 1;
+    // num2 = num < limit ? num + 10 : limit;
+    let num2 = num++;
+    getAllPokemons(num, num2);
+    //renderMorePokemons();
   }
 }
 
+// const sample = async function () {
+//   try {
+//     localStorage.clear();
+//     let api, fetchData;
+//     for (let i = 1; i < 20; i++) {
+//       api = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+//       console.log(api);
+//       fetchData = await fetch(api, {
+//         method: "GET",
+//       });
+//       console.log(fetchData);
+
+//       if (!fetchData.ok) throw new Error(`(${fetchData.status})`);
+//       const jsonData = await fetchData.json();
+//       pokemons.push(jsonData);
+//     }
+//     renderMorePokemons();
+//   } catch (err) {
+//     if (err.includes("Failed to fetch")) {
+//       alert(`Something went wrong. ${err.message}`);
+//     } else {
+//       console.error(err);
+//     }
+//   }
+// };
+
 //get data from pokeAPI
-const getAllPokemons = async function () {
+const getAllPokemons = async function (num, num2) {
+  //@@@ここら辺で読み込むnumとnum2を＋10とかにする。
+  //handleIntersect→getAllpokemons→jsonData→renderAllPokemonの順にconsole.logで来ていればOK。
+  //なぜならrenderAllPokemonの前にjsonDataが先に読み込めていないとrenderAllPokemonでhtmlの描画ができないから。
+  //filterで消しちゃったrenderAllPokemonは元に戻した方が良いかも？
+  // let num = 1;
+  // let num2 = num < limit ? num++ : limit;
+  console.log("getAllPokemons");
   try {
     localStorage.clear();
     let api, fetchData;
-    for (let i = 1; i < limit; i++) {
+    for (let i = num2; i < limit; i++) {
       api = `https://pokeapi.co/api/v2/pokemon/${i}/`;
       fetchData = await fetch(api, {
         method: "GET",
@@ -87,25 +127,38 @@ const getAllPokemons = async function () {
 
       if (!fetchData.ok) throw new Error(`(${fetchData.status})`);
       const jsonData = await fetchData.json();
+      console.log("jsonData");
       pokemons.push(jsonData);
+      renderMorePokemons();
     }
-    renderMorePokemons();
+    // let num = 10;
+    // let num2 = num < pokemons.length ? num + 10 : pokemons.length;
+    // console.log(num2);
+    // renderMorePokemons(num2);
   } catch (err) {
-    alert(`Something went wrong. ${err.message}`);
+    if (err.includes("Failed to fetch")) {
+      alert(`Something went wrong. ${err.message}`);
+    } else {
+      console.error(err);
+    }
   }
 };
 
 //load and render pokemon depends on how many pokemon left
-const renderMorePokemons = () => {
+const renderMorePokemons = (i) => {
+  console.log("renderMorePokemons");
   let targetPokemons;
   if (isFiltered) {
     targetPokemons = filteredPokemons;
   } else {
     targetPokemons = pokemons;
+    //targetPokemons = i;
+    //targetPokemons = pokemons.slice(0, num2);
   }
 
   targetPokemonListLength = targetPokemons.length;
-  let loadedItemLength = allPokemon.getElementsByClassName("pokemon-info").length;
+  let loadedItemLength =
+    allPokemon.getElementsByClassName("pokemon-info").length;
 
   if (targetPokemonListLength !== loadedItemLength) {
     for (let i = loadedItemLength; i < targetPokemonListLength; i++) {
@@ -125,9 +178,9 @@ const renderMorePokemons = () => {
         fetchOnePokemon(targetPokemons[i].name);
       });
       allPokemon.insertAdjacentElement("beforeend", pokemonInfo);
-      loadingImg.classList.add("hide");
     }
-  } 
+    loadingImg.classList.add("hide");
+  }
 };
 
 const renderFilteredPokemons = () => {
@@ -234,7 +287,7 @@ const registerClickEventsToTypeListItems = () => {
       for (const pokemon of pokemons) {
         for (const typeNode of pokemon.types) {
           if (typeNode.type.name === type) {
-            filteredPokemons.push(pokemon)
+            filteredPokemons.push(pokemon);
           }
         }
       }
