@@ -25,7 +25,6 @@ let pokemons = [];
 let filteredPokemons = [];
 let isFiltered = false;
 let observer;
-//let num2;
 
 //scroll button
 const goUp = document.querySelector(".go-up");
@@ -63,77 +62,42 @@ document.addEventListener("DOMContentLoaded", () => {
   if (registerClickEventsToTypeListItems()) {
     observer.unobserve(document.querySelector(".attribution"));
   }
-  //an initial load of some data
-  //getAllPokemons();
-  //sample();
 });
+
+let checkNumberofPokemon1 = 1;
 
 function handleIntersect(entries) {
   //wnen entries[0].isIntersecting === true(cross footer 50%), excute renderMorePokemons function
   if (entries[0].isIntersecting) {
-    console.log("handleIntersect");
+    //console.log("handleIntersect");
+    let checkNumberofPokemon2 = checkNumberofPokemon1++;
     let num = 1;
-    // num2 = num < limit ? num + 10 : limit;
-    let num2 = num++;
-    getAllPokemons(num, num2);
-    //renderMorePokemons();
+    if (checkNumberofPokemon2 >= 2) return;
+    getAllPokemons(num);
   }
 }
 
-// const sample = async function () {
-//   try {
-//     localStorage.clear();
-//     let api, fetchData;
-//     for (let i = 1; i < 20; i++) {
-//       api = `https://pokeapi.co/api/v2/pokemon/${i}/`;
-//       console.log(api);
-//       fetchData = await fetch(api, {
-//         method: "GET",
-//       });
-//       console.log(fetchData);
-
-//       if (!fetchData.ok) throw new Error(`(${fetchData.status})`);
-//       const jsonData = await fetchData.json();
-//       pokemons.push(jsonData);
-//     }
-//     renderMorePokemons();
-//   } catch (err) {
-//     if (err.includes("Failed to fetch")) {
-//       alert(`Something went wrong. ${err.message}`);
-//     } else {
-//       console.error(err);
-//     }
-//   }
-// };
-
 //get data from pokeAPI
 const getAllPokemons = async function (num, num2) {
-  //@@@ここら辺で読み込むnumとnum2を＋10とかにする。
-  //handleIntersect→getAllpokemons→jsonData→renderAllPokemonの順にconsole.logで来ていればOK。
+  //handleIntersect→getAllpokemons→jsonData→renderMorePokemonの順にconsole.logになるように。
   //なぜならrenderAllPokemonの前にjsonDataが先に読み込めていないとrenderAllPokemonでhtmlの描画ができないから。
-  //filterで消しちゃったrenderAllPokemonは元に戻した方が良いかも？
-  // let num = 1;
-  // let num2 = num < limit ? num++ : limit;
-  console.log("getAllPokemons");
+
+  //console.log("getAllPokemons");
+
   try {
     localStorage.clear();
     let api, fetchData;
-    for (let i = num2; i < limit; i++) {
+    for (let i = num; i < limit; i++) {
       api = `https://pokeapi.co/api/v2/pokemon/${i}/`;
       fetchData = await fetch(api, {
         method: "GET",
       });
-
       if (!fetchData.ok) throw new Error(`(${fetchData.status})`);
       const jsonData = await fetchData.json();
-      console.log("jsonData");
+      //console.log("jsonData");
       pokemons.push(jsonData);
       renderMorePokemons();
     }
-    // let num = 10;
-    // let num2 = num < pokemons.length ? num + 10 : pokemons.length;
-    // console.log(num2);
-    // renderMorePokemons(num2);
   } catch (err) {
     if (err.includes("Failed to fetch")) {
       alert(`Something went wrong. ${err.message}`);
@@ -145,7 +109,7 @@ const getAllPokemons = async function (num, num2) {
 
 //load and render pokemon depends on how many pokemon left
 const renderMorePokemons = (i) => {
-  console.log("renderMorePokemons");
+  //console.log("renderMorePokemons");
   loadingImg.classList.add("hide");
 
   let targetPokemons;
@@ -153,8 +117,6 @@ const renderMorePokemons = (i) => {
     targetPokemons = filteredPokemons;
   } else {
     targetPokemons = pokemons;
-    //targetPokemons = i;
-    //targetPokemons = pokemons.slice(0, num2);
   }
 
   targetPokemonListLength = targetPokemons.length;
@@ -180,7 +142,6 @@ const renderMorePokemons = (i) => {
       });
       allPokemon.insertAdjacentElement("beforeend", pokemonInfo);
     }
-    //loadingImg.classList.add("hide");
   }
 };
 
