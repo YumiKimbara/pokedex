@@ -11,6 +11,8 @@ $("input").on("focusout", function () {
   }
 });
 
+//test
+
 //set global variables
 let targetPokemonListLength;
 let limit = 899;
