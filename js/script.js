@@ -69,10 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function handleIntersect(entries) {
-  console.log("handleIntersect");
   //wnen entries[0].isIntersecting === true(cross footer 50%), excute renderMorePokemons function
   if (entries[0].isIntersecting) {
-    loadingImg.classList.remove("hide");
+    console.log("handleIntersect");
     let num = 1;
     // num2 = num < limit ? num + 10 : limit;
     let num2 = num++;
@@ -147,6 +146,8 @@ const getAllPokemons = async function (num, num2) {
 //load and render pokemon depends on how many pokemon left
 const renderMorePokemons = (i) => {
   console.log("renderMorePokemons");
+  loadingImg.classList.add("hide");
+
   let targetPokemons;
   if (isFiltered) {
     targetPokemons = filteredPokemons;
@@ -179,7 +180,7 @@ const renderMorePokemons = (i) => {
       });
       allPokemon.insertAdjacentElement("beforeend", pokemonInfo);
     }
-    loadingImg.classList.add("hide");
+    //loadingImg.classList.add("hide");
   }
 };
 
