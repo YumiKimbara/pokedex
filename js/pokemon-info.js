@@ -266,7 +266,7 @@ const searchPokemon2 = () => {
   form.addEventListener("submit", (e) => {
     localStorage.clear();
     e.preventDefault();
-    fetchOnePokemon(input.value.toLowerCase());
+    fetchOnePokemon(input.value.trim().toLowerCase());
   });
 };
 searchPokemon2();
