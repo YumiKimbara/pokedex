@@ -48,7 +48,8 @@ body {
 .onePokemon {
   display: flex;
   justify-content: center;
-  margin-top: 2.5rem; }
+  margin-top: 2.5rem;
+  position: relative; }
 
 .pokemon-info {
   border: 1px solid #cccccc;
@@ -69,7 +70,6 @@ body {
   border: 1px solid #cccccc;
   border-radius: 5px;
   box-shadow: 0 2px 5px #cccccc;
-  position: relative;
   width: 70%;
   display: flex;
   justify-content: space-around;
@@ -107,7 +107,7 @@ a {
 .third-title {
   position: absolute;
   left: 52.5%;
-  top: 22.5vh;
+  top: -4vh;
   background-color: white;
   z-index: 1; }
 
@@ -169,9 +169,7 @@ a {
   .pokemon-info2 {
     width: 80%; }
   .img-container .pokemon-img2 {
-    width: 120%; }
-  .third-title {
-    top: 17vh; } }
+    width: 120%; } }
 
 @media (max-width: 768px) {
   .pokemon-info2 {
@@ -179,7 +177,9 @@ a {
   .img-container .pokemon-img2 {
     width: 120%; }
   .third-title {
-    top: 19vh; } }
+    top: -3vh; }
+  .third-title-text {
+    font-size: 2.5rem; } }
 
 @media (max-width: 540px) {
   .pokemon-img {
@@ -190,7 +190,7 @@ a {
     .pokemon-info p {
       margin: 0.5rem; }
   .third-title {
-    top: 25.5vh; }
+    top: -2vh; }
   .third-title-text {
     font-size: 2rem; }
   .pokemon-info2 {
