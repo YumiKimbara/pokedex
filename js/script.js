@@ -139,7 +139,6 @@ const renderMorePokemons = (i) => {
 
       pokemonInfo.addEventListener("click", () => {
         localStorage.clear();
-
         fetchOnePokemon(targetPokemons[i].name);
       });
       allPokemon.insertAdjacentElement("beforeend", pokemonInfo);
@@ -227,7 +226,7 @@ const fetchOnePokemon = async (pokemonValue) => {
       };
 
       const secondFunc = async function () {
-        await window.open("pokemon-info.html");
+        await window.open("pokemon-info.html", "_blank");
       };
 
       const allFunc = async function () {
