@@ -43,6 +43,11 @@ body {
     transform: translateY(-5px);
     cursor: pointer;
   }
+
+  &:hover,
+  &:active {
+    width: 1025px;
+  }
 }
 
 .pokemon-info2 {
