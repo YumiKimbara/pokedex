@@ -226,7 +226,7 @@ const fetchOnePokemon = async (pokemonValue) => {
       };
 
       const secondFunc = async function () {
-        await window.open("pokemon-info.html", "_blank");
+        await window.location.replace("pokemon-info.html");
       };
 
       const allFunc = async function () {
