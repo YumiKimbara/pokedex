@@ -203,9 +203,6 @@ function renderOnePokemon(pokemonData) {
   loopAbilities(pokemonData);
 
   const contents2 = `
-    <div class="third-title">
-    <p class="third-title-text">${pokemonData.name}</p>
-    </div>
     <div class="pokemon-info2">
     <div class="img-container">
     <img class="pokemon-img2" src="${
@@ -213,6 +210,7 @@ function renderOnePokemon(pokemonData) {
     }">
     </div>
     <div class="text">
+    <p class="third-title-text">${pokemonData.name}</p>
     <p>No.${number}</p>
     <p>Name: ${pokemonData.name}</p>
     <p>Category: ${category}</p>
@@ -247,7 +245,7 @@ const fetchOnePokemon = async (pokemonValue) => {
       const firstFunc = async function () {
         await fetchSpeciesDetail(pokemonValue);
       };
-      
+
       const secondFunc = async function () {
         await location.reload("pokemon-info.html");
       };
